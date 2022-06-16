@@ -12,11 +12,13 @@ import javax.persistence.*;
 @Builder
 @Data
 @Entity
-@Table(name = "day")
-public class Day {
+@Table(name = "room")
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+
+    private Integer capacity;
 }

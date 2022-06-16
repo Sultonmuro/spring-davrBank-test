@@ -4,25 +4,33 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.jdbc.IncorrectResultSetColumnCountException;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Data
 @Entity
-@Table(name = "course")
-public class Course {
+@Table(name = "group")
+public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+  private String name;
+   @ManyToOne
+@JoinColumn(name = "course_id")
+private Course course;
 
-    private double price;
-
-    private Date duration;
+   @ManyToOne
+    private Teacher teacher;
+   @ManyToOne
+    private Room room;
+private Date start_date;
+private Date end_date;
 
 }
